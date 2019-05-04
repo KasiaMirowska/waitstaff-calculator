@@ -2,16 +2,73 @@
 <html lang="en">
 
 <head>
-  <title>Shopping List</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link rel="stylesheet" href="index.css">
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-   
+    <header>
+        <h1>WAITSTAFF CALCULATOR</h1>
+    </header>
+    <main>
+        <div class="section">
+            <div class='inner big-container'>
+                <h2>Enter the Meal Details</h2>
+                <form id="meal-details">
+                    <br>
+                    <label for="base-meal-price">Base meal price: $</label>
+                    <input type="text" name="base-meal-price" class="base-meal-price" placeholder="9.95">
+                    <br>
+                    <label for='tax-rate'>Tax rate: %</label>
+                    <input type='text' name='tax-rate' class='tax-rate' placeholder=''>
+                    <br>
+                    <label for='tip=persentage'>Tip persantage: %</label>
+                    <input type='text' name='tip-persentage' class='tip-persentage' placeholder=''>
+                    <br>
+                    <button type="submit">Add item</button>
+                    <button type='button'>Cancel</button>
+                    <br>
+                </form>
+            </div>
+        </div>
+        <div class="section">
+            <div class='inner small-container'>
+                <h2>Customer Charges</h2>
+                <div id='subtotal'>
+                    <p>Subtotal: $0.00</p>
+                </div>
+                <div id='tip'>
+                    <p>Tip: $0.00</p>
+                </div>
+                <div id='total'>
+                    <p>Total: $0.00</p>
+                </div>
+            </div>
+            <div class='inner small-container'>
+                <h2>My Earnings Info</h2>
+                <div id='tip-total'>
+                    <p>Tip total: $0.00</p>
+                </div>
+                <div id='meal-count'>
+                    <p>Meal count: 0</p>
+                </div>
+                <div id='average-tip-per-meal'>
+                    <p>Average meal tip: $0.00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="inner big-container">
+
+        </div> -->
+
+    </main>
+
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
     <script type="text/javascript" src="index.js"></script>
 </body>
+
 </html>

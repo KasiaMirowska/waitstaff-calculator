@@ -1,3 +1,53 @@
 * {
     box-sizing: border-box;
   }
+
+  header {
+      margin: auto;
+      border: 1px solid black;
+  }
+
+  h1 {
+      border: 2px solid red;
+      text-align: center;
+  }
+
+
+  main {
+    background-color: yellow;
+    border: 1px solid black;
+      text-align: center;
+     margin: auto;
+      width: 90%;
+  }
+
+  .inner {
+    display: inline-block;
+    /* margin: 20px;
+    width: 40%; */
+  }
+
+  .section {
+    display: inline-block;
+    background-color: red;
+    width: 49%;
+    height: 400px;
+  }
+  
+  .big-container {
+    background-color: lightblue;
+    border: 1px solid blue;
+    height: 400px;
+    width: 90%;
+    margin: auto;
+  }
+
+  .small-container {
+    border: 1px solid orange;
+    height: 150px;
+    width: 90%;
+    margin: auto;
+  }
+
+
+  
