@@ -1,56 +1,64 @@
 'use strict';
-console.log('hi');
-let RECORD = [];
-let EARNINGS = [];
-
-function MEAL(num1, num2, num3) {
-    this.meal = num1,
-    this.tax = num2,
-    this.total = function () {
-        return Number((this.meal * (this.tax / 100) + this.meal).toFixed(2));
-        },
-    this.tipPersentage = () => (Number(num3 / 100)),
-    this.actualTip = function() {
-           return Number((this.total() * this.tipPersentage()).toFixed(2));
-        }
-    this.subtotal = function() {
-            return (this.actualTip() + this.total()).toFixed(2);
-        }
-    }
-
-
-
-// takes info from form on submit, that then creates new object meal.
-//each new MEAL should get pushed to record array
-//each earning shoulgd get pushed to earnings array
-
-function handleMealSubmit() {
-    $('#meal-details').submit(function (e) {
-        e.preventDefault();
-        let baseMealPrice = Number($('.base-meal-price').val());
-        let salesTax = Number($('.tax-rate').val());
-        let myTip = Number($('.tip-persentage').val());
-        let newMeal = new MEAL(baseMealPrice, salesTax, myTip)
-        addMealToRecord(newMeal)
-        addToEarnings(newMeal.actualTip())
-        handleFormClear();
-        renderCustomerCharges(newMeal.total(), newMeal.actualTip(),newMeal.subtotal());
-        averageTip(newMeal.actualTip);
-        console.log(EARNINGS)
-    });
-    }
-
-function addMealToRecord(meal) {
-    RECORD.push(meal);
-}
-function addToEarnings(tip){
-    EARNINGS.push(Number(tip));
+const record = {
+    mealTotal: 0,
+    myTip: 0,
+    subtotal: 0,
+    totalTips: 0,
+    mealCount: 0,
+    averageTip: 0,
 }
 
-// let mealCount = function() {
-//     console.log(RECORD,'hi')
-//     let meals = RECORD.length;
-// }
+console.log(typeof record.totalTips)
+
+function handleSubmit() {
+        $('#meal-details').submit(function (e) {
+            e.preventDefault();
+            let mealPrice = parseFloat($('.base-meal-price').val());
+            console.log(mealPrice)
+            let salesTax = parseFloat($('.tax-rate').val());
+            let tip = parseFloat($('.tip-persentage').val());
+            handleFormClear()
+            updateRecord(mealPrice,salesTax,tip);
+            render();
+        });
+        }
+
+function updateRecord(meal,tax,tip){
+    //  let {mealTotal, myTip, subtotal, totalTips, mealCount,  averageTip} = record;
+    record.mealTotal =  parseFloat((meal * (tax / 100) + meal).toFixed(2));
+    record.myTip = parseFloat((record.mealTotal * (tip / 100)).toFixed(2));
+    record.subtotal = parseFloat((record.myTip + record.mealTotal).toFixed(2));
+
+    record.totalTips = (parseFloat(record.totalTips) + parseFloat(record.myTip)).toFixed(2);
+    
+    record.mealCount = record.mealCount + 1;
+    record.averageTip = (parseFloat(record.totalTips) / parseFloat(record.mealCount)).toFixed(2);
+    console.log(record)
+}  
+
+function render() {
+    $('#customer-info').html(`<h2>Customer Charges</h2>
+    <div id='total'>
+            <p>Total: $${record.mealTotal}</p>
+            </div>
+        <div id='tip' >
+            <p>Tip: $${record.myTip}</p>
+        </div>
+        <div id='subtotal'>
+            <p>Subtotal: $${record.subtotal} </p>
+        </div>`);
+
+    $('#waitstaff-earnings').html(`<h2>My Earnings Info</h2>
+    <div id='tip-total'>
+        <p>Tip total: $${record.totalTips} </p>
+    </div>
+    <div id='meal-count'>
+    <p>Meal count: ${record.mealCount}</p>
+    </div>
+    <div id='average-tip-per-meal'>
+        <p>Average tip: $${record.averageTip}</p>
+    </div>`)   
+}
 
 function handleFormClear() {
     $('.base-meal-price').val('');
@@ -58,34 +66,36 @@ function handleFormClear() {
     $('.tip-persentage').val('');
 }
 
-let averageTip = function(tip) {
-    console.log(EARNINGS,2)
-    let tipTotal = EARNINGS.reduce((acc, tip) => (acc + tip), 0);
-    let aveTip = Number((tipTotal / EARNINGS.length).toFixed(2)); 
-    handleEarningsInfo(tipTotal, aveTip)
+function handleCancel(){
+    $('#meal-details').on('click','#cancel', function(e) {
+        e.preventDefault();
+        handleFormClear();
+    });
+
 }
 
-function renderCustomerCharges(total,tip,subtotal){
-    $('#total').html(`Total: ${total}`);
-    $('#tip').html(`Tip: ${tip}`);
-    $('#subtotal').html(`Subtotal: ${subtotal}`);
-}
- function handleEarningsInfo(tipTotal,aveTip) {
-    console.log(EARNINGS,3)
-    console.log('here?')
-    let mealCount = RECORD.length;
-    console.log(mealCount)
-
-     $('#tip-total').html(`Tip total: ${tipTotal}`);
-     $('#meal-count').html(`Meal count: ${mealCount}`);
-     $('#average-tip-per-meal').html(`Average meal tip: ${aveTip}`)
- }
-
-
-function bundle() {
-    handleMealSubmit();
-
-    
+function handleReset(){
+    $('.section-2').on('click','#reset',function(e){
+        e.preventDefault();
+        console.log(e.target)
+        record.mealTotal = 0;
+        record.myTip = 0;
+        record.subtotal = 0;
+        record.totalTips = 0;
+        record.mealCount = 0;
+        record.averageTip = 0;
+        render();
+        });
 }
 
-$(bundle());
+
+
+function bundle(){
+    handleSubmit();
+    handleCancel()
+    handleReset();
+}
+$(bundle)
+
+
+

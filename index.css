@@ -6,6 +6,7 @@
       margin: auto;
       border: 1px solid black;
       text-align: center;
+     
   }
 
  input {
@@ -17,33 +18,38 @@
   .inner {
     border : solid 1px black;
     text-align: center;
-    /* margin: 60px; */
-    padding: 30px;
+    margin-top: 30px;
+    /* padding: 30px; */
   }
   
-  .big-container {
-   
-    flex:1;
+  .frame {
+    margin: 10%;
+    border: 1px solid red;
+    
   }
-
+ 
   .section-2 {
-   
     flex:1;
     display: flex;
     flex-direction: column;
+    
   }
   .small-container {
     flex: 1;
   }
   
 
- @media(min-width:670px) {
+ @media(min-width:700px) {
   .section {
     display: flex;
     justify-content: space-around; 
-
+   
+  }
+  .big-container {
+   flex:1 0 0;
   }
   .section-2 {
-    flex: 1 ;
+    flex: 1 0 0 ;
+   
   }
  }
