@@ -3,8 +3,10 @@
 
 <head>
     <title>Shopping List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
 </head>
 
@@ -17,28 +19,29 @@
             <div class='inner section-1'>
                 <div class='frame' >
                     <h2>Enter the Meal Details</h2>
-                    <form id="meal-details">
-                        <br>
-                        <label for="base-meal-price">Base meal price: $</label>
-                        <input type="text" name="base-meal-price" class="base-meal-price" placeholder="9.95">
-                        <br>
-                        <label for='tax-rate'>Tax rate: %</label>
-                        <input type='text' name='tax-rate' class='tax-rate' placeholder=''>
-                        <br>
-                        <label for='tip=persentage'>Tip persantage: %</label>
-                        <input type='text' name='tip-persentage' class='tip-persentage' placeholder=''>
-                        <br>
-                        <button type="submit">Submit</button>
-                        <button id='cancel' type='button'>Cancel</button>
-                        <br>
-
-                    </form>
+                    <div class='form-frame'>
+                        <form id="meal-details">
+                            <br>
+                            <label for="base-meal-price">Base meal price: $</label>
+                            <input type="text" name="base-meal-price" class="base-meal-price" placeholder="9.95">
+                            <br>
+                            <label for='tax-rate'>Tax rate: %</label>
+                            <input type='text' name='tax-rate' class='tax-rate' placeholder=''>
+                            <br>
+                            <label for='tip=persentage'>Tip persentage: %</label>
+                            <input type='text' name='tip-persentage' class='tip-persentage' placeholder=''>
+                            <br>
+                            <button type="submit">Submit</button>
+                            <button id='cancel' type='button'>Cancel</button>
+                            <br>
+                        </form>
+                    </div>  
                 </div>
             </div>
             <div class='section-2'>
                 <div class='inner small-container'>
                     <div class='frame' id='customer-info'>
-                        <h2>Customer Charges</h2>
+                        <h2>Customer Charges per Meal</h2>
                         <div id='total'>
                             <p>Total: </p>
                         </div>
@@ -63,8 +66,9 @@
                             <p>Average tip: </p>
                         </div>
                     </div>
+                    <button id='reset' type='button'>Reset</button>
                 </div>
-                <button id='reset' type='button'>RESET</button>
+                
             </div>
         </div>
     </main>

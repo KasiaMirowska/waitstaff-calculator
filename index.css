@@ -1,4 +1,5 @@
 * {
+   font-family: Montserrat, sans-serif;
     box-sizing: border-box;
   } 
 
@@ -10,47 +11,76 @@
   }
 
  input {
-   border: solid red 1px;
-   padding: 5px;
+   border: solid black 1px;
+   padding: 15px;
    margin: 20px;
+   border-radius: 10px;
+   font-size: 20px;
+   width: 150px;
    
  }
   form {
     margin-bottom: 180px;
-    margin-top: 30px
+    margin-top: 30px;
+    
   }
+  
   h2 {
     background-color:orange;
     padding: 20px;
+    margin: 0px;
+  }
+  button {
+    width: 100px;
+    margin: 10px;
+    background-color: rgb(7, 170, 7);
+    padding:5px;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    box-shadow:  8px 5px 2px 0px rgba(76, 76, 88, 0.2);
+  }
+  
+  button:hover {
+    background-color: rgb(184, 238, 103);
+  
   }
 
   #reset {
-    
-    width: 80px;
     align-self: center;
-
+    font-size: 20px;
   }
   .frame{
-    border : solid 1px purple;
+    border : solid 2px black;
     text-align: center;
     flex-basis: 40%;
     margin: 10px;
+    font-size: 20px;
     
+  }
+  .form-frame {
+    width: 80%;
+    text-align: right;
   }
   .inner {
      /* border : solid 1px black;  */
     text-align: center;
   }
-  
+  .wrapper {
+    display: flex;
+    justify-content: space-around; 
+    flex-direction: column;
+  }
   .section-1 {
-    margin-left: 200px;
+    margin-left: 0;
+    flex:1;
   }
  
   .section-2 {
     flex:1;
     display: flex;
     flex-direction: column;
-    margin-right: 200px;
+    margin-right: 0;
   }
   .small-container {
     flex: 1;
@@ -63,13 +93,15 @@
   .wrapper {
     display: flex;
     justify-content: space-around; 
-   
+    flex-direction: row;
   }
   .section-1 {
-    flex: 1 0 0;
+    flex: 1;
+    margin-left: 200px;
   }
   .section-2 {
-    flex: 1 0 0  ;
+    flex: 1;
+    margin-right: 200px;
   }
   
  }
